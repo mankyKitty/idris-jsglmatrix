@@ -90,7 +90,7 @@ normaliseV3 (MkVec3 a) (MkVec3 out) = do
 rotateM4 : JSGLMat4 -> Float -> JSGLVec3 -> JSGLMat4 -> IO JSGLMat4
 rotateM4 (MkMat4 a) rad (MkVec3 axis) (MkMat4 out) = do
   rotatedM4 <- mkForeign (FFun "mat4.rotate(%0,%1,%2,$3)"
-                          [FPtr,FFloat,FPtr,FPtr]
+                          [FPtr,FPtr,FFloat,FPtr]
                           FPtr
                          ) out a rad axis
   return (MkMat4 rotatedM4)
