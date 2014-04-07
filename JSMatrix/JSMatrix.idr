@@ -1,4 +1,4 @@
-module JSMatrix
+module JSMatrix.JSMatrix
 
 data JSGLMat3 : Type where
   MkMat3 : Ptr -> JSGLMat3
