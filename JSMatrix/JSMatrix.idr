@@ -32,6 +32,18 @@ createVec4 = do
   v <- mkForeign (FFun "vec4.create()" [] FPtr)
   return (MkVec4 v)
 
+-- Create a GL Matrix 3p Vector from a Vect 3 Float
+createVec3FromVect : Vect 3 Float -> IO JSGLVec3
+createVec3FromVect [x,y,z] = do
+  v <- mkForeign (FFun "vec3.fromValues(%0,%1,%2)" [FFloat,FFloat,FFloat] FPtr) x y z
+  return (MkVec3 v)
+
+-- Create a GL Matrix 4p Vector from a Vect 4 Float
+createVec4FromVect : Vect 4 Float -> IO JSGLVec4
+createVec4FromVect [r,g,b,a] = do
+  v <- mkForeign (FFun "vec4.fromValues(%0,%1,%2)" [FFloat,FFloat,FFloat,FFloat] FPtr) r g b a
+  return (MkVec4 v)
+  
 --| {mat4} mat4.translate(out, a, v)
 --| Translate a mat4 by the given vector
 -- Parameters:
